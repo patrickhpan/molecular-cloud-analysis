@@ -15,12 +15,13 @@ const analyze = require('./js/analyze');
 //     return entry;
 // }), null, 2))
 
-fs.writeFileSync('log', 
-    readData('data/').map(entry => 
-        `Longitude: ${entry.longitude}\n` + 
-        analyze.filter(entry.data)
-            .map(point => 
-                `${point[0].toPrecision(4)}\t${point[1].toPrecision(4)}`
-            ).join('\n')
-    ).join('\n\n')
-);
+readData('data/').forEach(entry => {
+    let { longitude, data } = entry;
+    let csvRows = analyze.filter(data)
+        .map(point => 
+            `${point[0].toPrecision(4)},${point[1].toPrecision(4)}`
+        ).join('\n')
+    csvRows = 'Velocity,Signal\n' + csvRows;
+
+    fs.writeFileSync(`out/longitude-${longitude}.csv`, csvRows)
+})

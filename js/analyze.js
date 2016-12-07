@@ -23,7 +23,7 @@ function filter(data, minSigma = 1) {
     console.log(`rmse ${rmse}`);
     return data.map(point => {
         let predicted = fit(point[0]);
-        let error = Math.abs(point[1] - predicted);
+        let error = point[1] - predicted; // we only want positive errors
         if(error > minSigma * rmse) {
             return point
         } else {
