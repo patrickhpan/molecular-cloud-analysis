@@ -14,15 +14,14 @@ function readData(cwd = process.cwd()) {
     data = data
         .map(entry => {
             return {
-                latitude: Number(entry.metadata.lii.toPrecision(4)),
+                longitude: Number(entry.metadata.lii.toPrecision(4)),
                 metadata: entry.metadata,
                 data: entry.data
             }
         })
-        .sort((a, b) => a.latitude - b.latitude)
+        .sort((a, b) => a.longitude - b.longitude)
 
     return data;
 }
 
 module.exports = readData;
-
