@@ -45,7 +45,10 @@ function getData(filename) {
         }
     })
 
+    let longitude = Number(metadata.lii.toPrecision(4))
+
     return { 
+        longitude,
         metadata,
         data
     };
