@@ -3,4 +3,7 @@ data/
 *.swp
 .DS_Store
 log
+log.*
+*.log
 out/
+*.csv

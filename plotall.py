@@ -11,6 +11,7 @@ velocities = data['Velocity'].tolist()
 signals = data['Signal'].tolist()
 
 plt.scatter(velocities, signals);
+plt.plot(velocities, signals);
 plt.savefig(file + '.png')
 
 
